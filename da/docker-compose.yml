@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+    postgres:
+        container_name: 'postgres'
+        image: postgres:10.5
+        volumes:
+          - ./scripts.sql
+        environment:
+          - POSTGRES_USER=postgres
+          - POSTGRES_PASSWORD=postgres
+        ports:
+          - '5433:5432'
+    app:
+      build: ""
+      image: spring_docker
+      ports:
+        - '8080:8080'
+      depends_on:
+        - postgres

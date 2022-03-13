@@ -1,0 +1,149 @@
+{
+	"info": {
+		"_postman_id": "1e2f29df-f59b-4b89-b2b0-4bc04dc828e9",
+		"name": "Documents",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetAllDocumentsFromUser",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "userEmail",
+						"value": "user1@test.com",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "localhost:8080/document/documents?userEmail=user2@test.com",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"document",
+						"documents"
+					],
+					"query": [
+						{
+							"key": "userEmail",
+							"value": "user2@test.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UploadDocument",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "document",
+							"type": "file",
+							"src": "/Users/jsantos/Desktop/Folders/Proyectos/DocumentAnalyzer/Documents/test2.txt"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/document?userEmail=user2@test.com",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"document"
+					],
+					"query": [
+						{
+							"key": "userEmail",
+							"value": "user2@test.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetFrecuencyOfWords",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/document/frecuency?userEmail=user2@test.com&documentName=test2.txt&totalWords=3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"document",
+						"frecuency"
+					],
+					"query": [
+						{
+							"key": "userEmail",
+							"value": "user2@test.com"
+						},
+						{
+							"key": "documentName",
+							"value": "test2.txt"
+						},
+						{
+							"key": "totalWords",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetUsersThatDontUpload",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/document/users?fromDate=2022-03-01&toDate=2022-03-11",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"document",
+						"users"
+					],
+					"query": [
+						{
+							"key": "userEmail",
+							"value": "user3@test.com",
+							"disabled": true
+						},
+						{
+							"key": "fromDate",
+							"value": "2022-03-01"
+						},
+						{
+							"key": "toDate",
+							"value": "2022-03-11"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

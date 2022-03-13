@@ -1,0 +1,115 @@
+swagger: "2.0"
+info:
+  description: ""
+  version: "1.0.0"
+  title: "Document Analyzer"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "im.javiersantos@gmail.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+paths:
+  /document:
+    post:
+      summary: Upload the document.
+      parameters:
+      - in: "formData"
+        name: "document"
+        description: "Upload a document"
+        required: true
+        type: "string"
+      - in: "path"  
+        name: "userEmail"
+        required: true
+        type: "string"
+      responses:
+        '200':
+          description: Ok
+  /document/documents:
+    get:
+      summary: Returns a list of all the documents from one user.
+      parameters:
+      - in: "path"  
+        name: "user email"
+        required: true
+        type: "string"
+      responses:
+        '200':
+          description: A list of all the documents
+          schema:
+            type: "array"
+            $ref: "#/definitions/Document" 
+  /document/frecuency:
+    get:
+      summary: Returns a list of the most frecuent words.
+      parameters:
+      - name: "words"
+        in: "path"
+        description: "Number of words to know the frecuency"
+        required: true
+        type: "integer"
+      - in: "path"  
+        name: "user email"
+        required: true
+        type: "string"
+      - in: "path"  
+        name: "document name"
+        required: true
+        type: "string"          
+      responses:
+        '200':
+          description: A list of the most frecuent words.
+          schema:
+            type: "array"
+            $ref: "#/definitions/Word"      
+  /document/users:
+    get:
+      summary: Returns a list of all the users that did not upload a document given a period of time.
+      parameters:
+      - in: "path"  
+        name: "fromDate"
+        required: true
+        type: "string"
+      - in: "path"  
+        name: "toDate"
+        required: true
+        type: "string"  
+      responses:
+        '200':
+          description: A list of all the users
+          schema:
+            type: "array"
+            $ref: "#/definitions/User"             
+definitions:
+  Document:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+        example: "Document1.txt"
+      creationDate:
+        type: "string"
+        example: "2022-03-14"  
+  Word:
+    type: "object"
+    properties:
+      Contract:
+        type: "string"
+        example: "15"      
+      Letter:
+        type: "string"
+        example: "11" 
+  User:      
+    type: "object"
+    properties:
+      number:
+        type: "integer"     
+        example: 3
+      userEmails:
+        type: "array"
+        items: 
+          type: "string"
+        example: ["user1@test.com", "user2@test.com", "user3@test.com"]       
+
+    
