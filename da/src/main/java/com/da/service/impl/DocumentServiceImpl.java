@@ -4,7 +4,6 @@ import com.da.entity.UserEntity;
 import com.da.service.DocumentProcessorService;
 import org.springframework.util.StringUtils;
 import com.da.dto.rs.DocumentRS;
-import com.da.dto.rs.FrecuencyRS;
 import com.da.dto.rs.UserRS;
 import com.da.entity.DocumentEntity;
 import com.da.repository.DocumentRepository;

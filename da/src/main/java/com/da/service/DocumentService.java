@@ -1,7 +1,6 @@
 package com.da.service;
 
 import com.da.dto.rs.DocumentRS;
-import com.da.dto.rs.FrecuencyRS;
 import com.da.dto.rs.UserRS;
 import org.springframework.web.multipart.MultipartFile;
 

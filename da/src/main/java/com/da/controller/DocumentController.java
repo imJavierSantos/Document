@@ -1,15 +1,12 @@
 package com.da.controller;
 
 import com.da.dto.rs.DocumentRS;
-import com.da.dto.rs.FrecuencyRS;
 import com.da.dto.rs.UserRS;
 import com.da.service.DocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.websocket.server.PathParam;
 import java.util.LinkedHashMap;
 import java.util.List;
 
