@@ -15,25 +15,24 @@ public class DocumentProcessorServiceImpl implements DocumentProcessorService {
 
     @Override
     public LinkedHashMap<String, String> frecuentWords(byte[] documentData, Integer totalWords) {
-
         String document = cleanDocument(documentData);
         document = removeUnnecesaryWordsFromDocument(document);
         Map<String, Integer> wordsCounted = countWordsFromDocument(document);
         return shortCountedWords(wordsCounted, totalWords);
     }
 
-    private String cleanDocument(byte[] documentData) {
+    private static String cleanDocument(byte[] documentData) {
         return new String(documentData).replaceAll("[^a-zA-Z ]", "").toLowerCase();
     }
 
-    private String removeUnnecesaryWordsFromDocument(String document) {
+    private static String removeUnnecesaryWordsFromDocument(String document) {
         document = " ".concat(document).concat(" ");
         return document.replaceAll(" the ", " ").replaceAll(" me ", " ").replaceAll(" you ", " ")
                 .replaceAll(" i ", " ").replaceAll(" of ", " ").replaceAll(" and ", " ")
                 .replaceAll(" a ", " ").replaceAll(" we ", " ");
     }
 
-    private Map<String, Integer> countWordsFromDocument(String document){
+    private static Map<String, Integer> countWordsFromDocument(String document){
         String[] words = document.split("\\s+");
         int wrc=1;
         Map<String, Integer> result = new HashMap<>();
@@ -44,7 +43,7 @@ public class DocumentProcessorServiceImpl implements DocumentProcessorService {
                     words[j]="0";
                 }
             }
-            if(words[i]!="0") {
+            if(!Objects.equals(words[i], "0")) {
                 result.put(words[i], wrc);
             }
             wrc=1;
@@ -53,7 +52,7 @@ public class DocumentProcessorServiceImpl implements DocumentProcessorService {
         return result;
     }
 
-    private LinkedHashMap<String, String> shortCountedWords(Map<String, Integer> countedWords, Integer totalWords){
+    private static LinkedHashMap<String, String> shortCountedWords(Map<String, Integer> countedWords, Integer totalWords){
         LinkedHashMap<String, String> sortedMap = new LinkedHashMap<>();
         countedWords.entrySet()
                 .stream().limit(totalWords)

@@ -3,8 +3,6 @@ services:
     postgres:
         container_name: 'postgres'
         image: postgres:10.5
-        volumes:
-          - /scripts.sql
         environment:
           - POSTGRES_USER=postgres
           - POSTGRES_PASSWORD=postgres
