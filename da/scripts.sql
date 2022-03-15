@@ -15,15 +15,10 @@ create table document_analyzer.team (
 
 -- CREATE TABLE USER_TEAM
 create table document_analyzer.user_team (
-	user_email varchar(150) not null,
-	team_name varchar(150) not null,
-	foreign key (user_email)
-		references document_analyzer.user (email),
-	foreign key (team_name)
-		references document_analyzer.team (name)
+	user_email varchar(150) references document_analyzer.user (email) on update CASCADE on delete cascade,
+	team_name varchar(150) references document_analyzer.team (name) on update cascade,
+	constraint user_team_pkey primary key (user_email, team_name)
 );
-
-ALTER TABLE ONLY document_analyzer.user_team ADD CONSTRAINT "ID_PKEY" PRIMARY KEY (user_email,team_name);
 
 -- CREATE TABLE DOCUMENT
 create table document_analyzer.document (

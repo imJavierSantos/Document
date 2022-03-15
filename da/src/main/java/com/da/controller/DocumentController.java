@@ -11,9 +11,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 @RestController
-@RequestMapping("document")
+@RequestMapping(value = "document")
 public class DocumentController {
-
 
     @Autowired
     private DocumentService documentService;
